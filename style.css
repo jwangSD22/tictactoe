@@ -1,0 +1,146 @@
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.superContainer{
+    background-color:lightgray;
+    font-family:'Courier New', Courier, monospace;
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    width:70vw;
+}
+
+.leftContainer{
+background-color: aquamarine;
+}
+
+
+
+
+.centerContainer{
+    display:grid;
+    grid-template-rows: 1fr 5fr 1fr;
+    width:40vw;
+    gap:40px;
+}
+
+.msgBox{
+    height:10vh;
+    justify-self:center;
+    background-color:aliceblue;
+    width:100%;
+}
+
+.tttContainer{
+    height:50vh;
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.insideBox{
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.gameButtons{
+    height:10vh;
+    background-color:rgb(244, 205, 190);
+    justify-self:center;
+    align-self:center;
+    width:100%;
+}
+
+.rightContainer{
+background-color: blanchedalmond;
+
+}
+
+.outsideContainer{
+    width:15vw;
+    display:grid;
+}
+
+
+.iconBox{
+    height:20vh;
+    justify-self:center;
+    align-self:center;
+}
+
+.scoreBox{
+    height:10vh;
+    justify-self:center;
+    align-self:center;
+    background-color:rgb(173, 202, 255);
+    width:100%;
+}
+
+/*tictactoe grid styling*/
+    .box1{
+    width:100%;
+    height:100%;
+    border-right: solid 2px red;
+    border-bottom: solid 2px red; 
+   }
+   
+   .box2{
+    width:100%;
+    height:100%;
+    border-right: solid 2px red;
+    border-bottom: solid 2px red; 
+   }
+
+   .box3{
+    width:100%;
+    height:100%;
+    border-bottom: solid 2px red; 
+   }
+
+   .box4{
+    width:100%;
+    height:100%;
+    border-right: solid 2px red;
+    border-bottom: solid 2px red; 
+   }
+
+   .box5{
+    width:100%;
+    height:100%;
+    border-right: solid 2px red;
+    border-bottom: solid 2px red; 
+   }
+
+   .box6{
+    width:100%;
+    height:100%;
+    border-bottom: solid 2px red; 
+   }
+
+   .box7{
+    width:100%;
+    height:100%;
+    border-right: solid 2px red;
+
+   }
+
+   .box8{
+    width:100%;
+    height:100%;
+    border-right: solid 2px red;
+
+   }
+
+   .box9{
+    width:100%;
+    height:100%;
+
+   }
+
+
