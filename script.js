@@ -1,19 +1,48 @@
-(function (){
+const currentPlayers = [];
+const gameBoard = [
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '']
+    ;
 
-playerCreator= function (name,marker){
-    return {
-        name,marker
+let playerName = ''
+
+let cpuEasy = {
+    playerName:'Easy Computer',
+    marker:'',
+
+}
+
+function render(){
+let selector = document.getElementsByClassName(`insideBox`)
+for(let i=0; i<selector.length;i++){
+    selector[i].innerHTML = `${gameBoard[i]}`;
+}
+}
+
+function clearBoard(){
+    for (let i=0;i<9;i++){
+        gameBoard[i]=''
     }
-    
-}
-,
-
-array = [1,2,3,4]
-,
-
-currentPlayers = function currentPlayers(player1,player2){
-    return {player1, player2}
+    render()
 }
 
-return{booty:currentPlayers}
-})();
+function createPerson(){
+      return{
+        playerName: playerName,
+        marker: '',
+        pusher(){
+            console.log(this)
+        currentPlayers.push(this)
+        }
+
+    }
+ }
+ 
+ 
