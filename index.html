@@ -10,35 +10,73 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-<div class="superContainer">
+
+<div class="hiddenDiv" id="hiddenDiv">
+    <div class="playerVSCPU" id="playerVSCPU">
+        <span>VS:</span>
+        <div class="choiceBox" id="playerChoice">
+            <img src="/player.png">
+        </div>
+        <span>or</span>
+        <div class="choiceBox" id="cpuChoice"><img src="/computer.jpg"></div>
+        
+    </div>
+
+    <div class="cpuVScpu">
+        <span>CHOOSE:</span>
+        <div class="choiceBox" id="easyCPUchoice">Easy</div>
+        <div class="choiceBox" id="medCPUchoice">Medium</div>
+        <div class="choiceBox" id="hardCPUchoice">Hard</div>
+    </div>
+
+    <div class="nameInput" id="nameInput">
+        <form id="nameInputForm">
+            <label for="nameInputBox" id="nameInputBoxLabel">Player 1 Name:</label>
+            <input type="text" name="nameInputBox" id="nameInputBox">
+            <input type="button" name="submitName" id="submitName" value="SUBMIT">
+        </form>
+    </div>
+
+
+</div>
+<div class="superContainer" id="superContainer">
 
     <div class="leftContainer outsideContainer">
-        <div class="iconBox player1Icon">1</div>
-        <div class="scoreBox player1Score">1</div>
+        <div class="nameBox" id="player1Name"></div>
+        <div class="iconBox" id="player1Icon"></div>
+        <div class="scoreBox player1Score">SCORE:</div>
+        <div class="scoreBox" id="scorebox1"></div>
     </div>
     
         <div class="centerContainer">
     
-            <div class="msgBox">msg here</div>
+            <div class="msgBox" id="msgBox">TIC TAC TOE</div>
     
             <div class="tttContainer">
-            <div class="insideBox box1">1</div>
-            <div class="insideBox box2">2</div>
-            <div class="insideBox box3">3</div>
-            <div class="insideBox box4">4</div>
-            <div class="insideBox box5">5</div>
-            <div class="insideBox box6">6</div>
-            <div class="insideBox box7">7</div>
-            <div class="insideBox box8">8</div>
-            <div class="insideBox box9">9</div>
+            <div class="insideBox" id="box0"></div>
+            <div class="insideBox" id="box1"></div>
+            <div class="insideBox" id="box2"></div>
+            <div class="insideBox" id="box3"></div>
+            <div class="insideBox" id="box4"></div>
+            <div class="insideBox" id="box5"></div>
+            <div class="insideBox" id="box6"></div>
+            <div class="insideBox" id="box7"></div>
+            <div class="insideBox" id="box8"></div>
             </div>
     
-            <div class="gameButtons">buttons here</div>
+            <div class="gameButtons">
+
+                <button class="newGame" id="newGame">New Game</button>
+                <button class="continue" id = "continue">Continue</button>
+            
+            </div>
         </div>
     
     <div class="rightContainer outsideContainer">
-        <div class="iconBox player2Icon">2</div>
-        <div class="scoreBox player2Score">2</div>
+        <div class="nameBox" id="player2Name"></div>
+        <div class="iconBox" id="player2Icon"></div>
+        <div class="scoreBox player2Score">SCORE:</div>
+        <div class="scoreBox" id="scorebox2"></div>
     </div>
 
 </div>

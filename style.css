@@ -1,9 +1,91 @@
 body{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+display:flex;
+justify-content:center;
+align-items:center;
+
 
 }
+
+img{
+    display:flex;
+    width:100%;
+    height:100%;
+}
+
+.hiddenDiv{
+    background-color:rgb(255, 157, 157);
+    display:none;
+    position:absolute;
+    width:50vw;
+    height:25vh;
+    font-family:'Courier New', Courier, monospace;
+}
+
+.continue{
+    display:none;
+}
+
+.nameInput{
+    display:none;
+    width:100%;
+    font-size:2em;
+    justify-content:space-around;
+    align-items:center;
+}
+
+.nameBox{
+    display:flex;
+    width:100%;
+    font-size:2em;
+    justify-content:center;
+    align-items:center;
+    grid-column:1/-1;
+}
+
+#nameInputForm{
+    display:flex;
+    width:100%;
+    justify-content:center;
+    gap:20px;
+}
+
+#submitName{
+    width:max-content;
+}
+
+.playerVSCPU{
+/*if turning on display here choose flex!*/
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+    height:100%;
+    width:100%;
+    font-size:4em;
+    font-family:'Courier New', Courier, monospace;
+}
+
+.cpuVScpu{
+    justify-content:space-evenly;
+    align-items:center;
+    height:100%;
+    width:100%;
+    display:none;
+}
+
+.choiceBox{
+    display:flex;
+    background-color:white;
+    height:80%;
+    width:20%;
+    justify-content:center;
+    align-items:center;
+    border:solid 2px black;
+}
+
+.choiceBox:hover{
+    cursor:grab;
+}
+
 
 .superContainer{
     background-color:lightgray;
@@ -13,7 +95,9 @@ body{
     justify-content:center;
     align-items:center;
     height:100vh;
-    width:60vw;
+    min-width:50vw;
+    max-width:1200px;
+    
 }
 
 .leftContainer{
@@ -35,24 +119,33 @@ background-color: aquamarine;
     justify-self:center;
     background-color:aliceblue;
     width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2em;
 }
 
 .tttContainer{
     height:50vh;
     display:grid;
     grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
 }
 
 .insideBox{
 display:flex;
 justify-content:center;
 align-items:center;
+width:100%;
+height:100%;
+font-size:5em;
 }
 
 .gameButtons{
     height:10vh;
+    display:flex;
     background-color:rgb(244, 205, 190);
-    justify-self:center;
+    justify-content:center;
     align-self:center;
     width:100%;
 }
@@ -65,79 +158,85 @@ background-color: blanchedalmond;
 .outsideContainer{
     width:15vw;
     display:grid;
+    grid-template-columns: 1fr 1fr;;
+
 }
 
 
 .iconBox{
     height:20vh;
+    width:100%;
     justify-self:center;
     align-self:center;
+    border:solid 2px red;
+    grid-column:1/-1
 }
 
 .scoreBox{
+    display:flex;
     height:10vh;
-    justify-self:center;
-    align-self:center;
+    justify-content:center;
+    align-items:center;
     background-color:rgb(173, 202, 255);
     width:100%;
 }
 
 /*tictactoe grid styling*/
-    .box1{
+    #box0{
     width:100%;
     height:100%;
     border-right: solid 2px red;
     border-bottom: solid 2px red; 
    }
    
-   .box2{
+   #box1{
     width:100%;
     height:100%;
     border-right: solid 2px red;
     border-bottom: solid 2px red; 
    }
 
-   .box3{
+   #box2{
     width:100%;
     height:100%;
     border-bottom: solid 2px red; 
    }
 
-   .box4{
+   #box3{
     width:100%;
     height:100%;
     border-right: solid 2px red;
     border-bottom: solid 2px red; 
    }
 
-   .box5{
+   #box4{
     width:100%;
     height:100%;
     border-right: solid 2px red;
     border-bottom: solid 2px red; 
    }
 
-   .box6{
+   #box5{
     width:100%;
     height:100%;
     border-bottom: solid 2px red; 
    }
 
-   .box7{
+   #box6{
     width:100%;
     height:100%;
     border-right: solid 2px red;
 
    }
 
-   .box8{
+   #box7{
     width:100%;
     height:100%;
     border-right: solid 2px red;
 
    }
 
-   .box9{
+   #box8{
     width:100%;
     height:100%;
 
