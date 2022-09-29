@@ -23,6 +23,7 @@ const scorebox1 = document.getElementById('scorebox1')
 const scorebox2 = document.getElementById('scorebox2')
 const player1Name = document.getElementById('player1Name')
 const player2Name = document.getElementById('player2Name')
+const tttContainer = document.getElementById('tttContainer')
 
 newGameButton.addEventListener('click',newGameStart);
 continueButton.addEventListener('click',chooseContinue);
@@ -121,12 +122,13 @@ function createPerson(){
 function newGameStart(){
 clearBoard();
 currentPlayers = []
-
 playerVSCPU.setAttribute('style','display:flex');
 hiddenDiv.setAttribute('style','display:flex;z-index: 99;');
 superContainer.setAttribute('style','opacity:20%');
 playerVSCPU.setAttribute('style','display:flex');
 nameInput.setAttribute('style','display:none');
+msgBox.setAttribute('style','animation:none');
+tttContainer.setAttribute('style','animation:none');
 }
 
 
@@ -256,11 +258,11 @@ function winnerDecided() {}
 function afterWin(x){
     removeListeners();
     msgBox.innerHTML = `${x.playerName} WINS!`
-/* function to higlight box of winner */
+    msgBox.setAttribute('style','animation: blinkWin .02s step-end 25')
     x.score++
     renderScore();
     document.getElementById('continue').setAttribute('style','display:inline')
-/* udpate menu for choices.. completely new game, continue to next round? */
+
 }
 
 
@@ -271,6 +273,8 @@ function chooseContinue() {
     clearBoard();
     addListeners();
     document.getElementById('continue').setAttribute('style','display:none')
+    tttContainer.setAttribute('style','animation:none');
+    msgBox.setAttribute('style','animation:none');
 }
 
 function switchXO(x) {
@@ -301,7 +305,6 @@ winnerFlag = true
 };
 
 
-
 if (boxChk(0,1,2) === true){console.log(winnerChecker(0));afterWin(WINNER)}
 if (boxChk(3,4,5) === true){console.log(winnerChecker(3));afterWin(WINNER)}
 if (boxChk(6,7,8) === true){console.log(winnerChecker(6));afterWin(WINNER)}
@@ -314,6 +317,9 @@ else if(drawCheck() && winnerFlag === false){
     console.log('draw')
     document.getElementById('continue').setAttribute('style','display:inline')
     msgBox.innerHTML='DRAW GAME!!'
+    tttContainer.setAttribute('style','animation: blinkDraw .02s step-end 18')
+    msgBox.setAttribute('style','animation: blinkDraw .02s step-end 18')
+
 }
 }
 

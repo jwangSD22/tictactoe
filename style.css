@@ -3,6 +3,18 @@
     src:url('Quantico-Regular.ttf');
 }
 
+@keyframes blinkDraw {
+    50% {
+        background-color:pink;
+    }
+}
+
+@keyframes blinkWin {
+    50% {
+        background-color:lightgreen;
+    }
+}
+
 body{
 display:flex;
 justify-content:center;
