@@ -1,3 +1,8 @@
+@font-face{
+    font-family:'quantico';
+    src:url('Quantico-Regular.ttf');
+}
+
 body{
 display:flex;
 justify-content:center;
@@ -13,12 +18,17 @@ img{
 }
 
 .hiddenDiv{
-    background-color:rgb(255, 157, 157);
+    background-color:white;
     display:none;
     position:absolute;
     width:50vw;
     height:25vh;
-    font-family:'Courier New', Courier, monospace;
+    font-family:'quantico','Courier New', Courier, monospace;
+    border: solid 4px black;
+}
+
+#hiddenBox{
+    display:none;
 }
 
 .continue{
@@ -61,7 +71,7 @@ img{
     height:100%;
     width:100%;
     font-size:4em;
-    font-family:'Courier New', Courier, monospace;
+    font-family:'quantico'
 }
 
 .cpuVScpu{
@@ -88,8 +98,8 @@ img{
 
 
 .superContainer{
-    background-color:lightgray;
-    font-family:'Courier New', Courier, monospace;
+    background-color:white;
+    font-family:'quantico','Courier New', Courier, monospace;
     display:flex;
     gap:20px;
     justify-content:center;
@@ -101,7 +111,7 @@ img{
 }
 
 .leftContainer{
-background-color: aquamarine;
+background-color: white;
 }
 
 
@@ -117,12 +127,12 @@ background-color: aquamarine;
 .msgBox{
     height:10vh;
     justify-self:center;
-    background-color:aliceblue;
+    background-color:white;
     width:100%;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:2em;
+    font-size:3em;
 }
 
 .tttContainer{
@@ -130,6 +140,7 @@ background-color: aquamarine;
     display:grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(3,1fr);
+    border:solid 2px gray;
 }
 
 .insideBox{
@@ -144,14 +155,14 @@ font-size:5em;
 .gameButtons{
     height:10vh;
     display:flex;
-    background-color:rgb(244, 205, 190);
-    justify-content:center;
+    background-color:white;
+    justify-content:space-evenly;
     align-self:center;
     width:100%;
 }
 
 .rightContainer{
-background-color: blanchedalmond;
+background-color: white;
 
 }
 
@@ -159,6 +170,7 @@ background-color: blanchedalmond;
     width:15vw;
     display:grid;
     grid-template-columns: 1fr 1fr;;
+    font-family:'Courier New', Courier, monospace
 
 }
 
@@ -177,8 +189,9 @@ background-color: blanchedalmond;
     height:10vh;
     justify-content:center;
     align-items:center;
-    background-color:rgb(173, 202, 255);
+    background-color:white;
     width:100%;
+    font-size:2em;
 }
 
 /*tictactoe grid styling*/

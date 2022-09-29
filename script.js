@@ -30,6 +30,13 @@ playerChoice.addEventListener('click',choosePlayer);
 cpuChoice.addEventListener('click',()=>alert('test'));
 submitName.addEventListener('click',submitNameFxn);
 
+document.getElementById('nameInputBox').onkeydown = function (e){
+    let keyCode = e.code || e.key;
+    if (keyCode == 'Enter'){
+        submitNameFxn();
+    };
+}
+
 
 
 let currentPlayers = [];
@@ -129,6 +136,7 @@ function choosePlayer(){
     //opens nameInput menu//
     player1Icon.appendChild(PlayerImage);
       player2Icon.appendChild(Player2Image);
+      document.getElementById('nameInputBox').focus();
  }
 
 
@@ -148,6 +156,7 @@ document.getElementById('nameInputBox').value = '';
 }
 if (currentPlayers.length === 1){
     nameInputBoxLabel.innerHTML = 'Player 2 Name:'
+    document.getElementById('nameInputBox').focus();
 }
 if (currentPlayers.length === 2){
     console.log('ready to play');
