@@ -108,6 +108,11 @@ img{
     cursor:grab;
 }
 
+/* .nameBox{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+} */
 
 .superContainer{
     background-color:white;
@@ -182,7 +187,7 @@ background-color: white;
     width:15vw;
     display:grid;
     grid-template-columns: 1fr 1fr;;
-    font-family:'Courier New', Courier, monospace
+    font-family:'Courier New', Courier, monospace;
 
 }
 
@@ -203,7 +208,7 @@ background-color: white;
     align-items:center;
     background-color:white;
     width:100%;
-    font-size:2em;
+    font-size:3em;
 }
 
 /*tictactoe grid styling*/

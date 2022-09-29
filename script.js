@@ -6,6 +6,10 @@ const cpuChoice = document.getElementById('cpuChoice');
 const superContainer = document.getElementById('superContainer');
 const nameInput = document.getElementById('nameInput');
 const playerVSCPU = document.getElementById('playerVSCPU');
+const cpuVScpu = document.getElementById('cpuVScpu');
+const easyCPUchoice = document.getElementById('easyCPUchoice');
+const medCPUchoice = document.getElementById('medCPUchoice');
+const hardCPUchoice = document.getElementById('hardCPUchoice');
 const submitName = document.getElementById('submitName');
 const nameInputBox = document.getElementById('nameInputBox');
 const form = document.getElementById('playerNameInput');
@@ -28,8 +32,9 @@ const tttContainer = document.getElementById('tttContainer')
 newGameButton.addEventListener('click',newGameStart);
 continueButton.addEventListener('click',chooseContinue);
 playerChoice.addEventListener('click',choosePlayer);
-cpuChoice.addEventListener('click',()=>alert('test'));
+cpuChoice.addEventListener('click',chooseCPU);
 submitName.addEventListener('click',submitNameFxn);
+
 
 document.getElementById('nameInputBox').onkeydown = function (e){
     let keyCode = e.code || e.key;
@@ -37,8 +42,6 @@ document.getElementById('nameInputBox').onkeydown = function (e){
         submitNameFxn();
     };
 }
-
-
 
 let currentPlayers = [];
 const gameBoard = [
@@ -56,24 +59,73 @@ const gameBoard = [
 let playerName = ''
 
 let cpuEasy = {
-    playerName:'Easy Computer',
+    playerName:'Easy CPU',
     marker:'',
     cpu:'cpu',
     score:'0'
 
 }
 let cpuMedium = {
-    playerName:'Medium Computer',
+    playerName:'Medium CPU',
     marker:'',
     cpu:'cpu',
     score:'0'
 
 }
 let cpuHard = {
-    playerName:'Hard Computer',
+    playerName:'Hard CPU',
     marker:'',
     cpu:'cpu',
     score:'0'
+
+}
+
+function cpuAIswitch(){
+if (currentPlayers[1]===cpuEasy)
+{easyCPUAI()};
+if (currentPlayers[1]===cpuMedium)
+{medCPUAI()};
+if (currentPlayers[1]===cpuHard)
+{hardCPUAI()};
+}
+
+function RNG(){
+let randomNum = Math.floor(Math.random()*9);
+return randomNum;
+}
+
+//EASY CPU AI//
+function easyCPUAI(){
+let randomVar = RNG();
+let xcount = gameBoard.filter(x => x === 'X').length;
+allBoxes = document.getElementsByClassName('insideBox')
+if (drawCheck() === true){return}
+if (currentPlayers[1].marker === 'X' && xcount === 0){
+gameBoard[randomVar] = 'X';
+allBoxes[randomVar].innerHTML = 'X'
+}
+
+else if (gameBoard[randomVar] === 'X' || gameBoard[randomVar] === 'O'){
+    easyCPUAI();
+
+}
+else {
+    if(xcount > 0){
+    gameBoard[randomVar] = currentPlayers[1].marker;
+    allBoxes[randomVar].innerHTML = currentPlayers[1].marker;
+    }
+}
+}
+
+//MEDIUM CPU AI//
+
+function medCPUAI(){
+
+}
+
+//HARD CPU AI//
+
+function hardCPUAI(){
 
 }
 
@@ -85,7 +137,6 @@ for(let i=0; i<selector.length;i++){
     selector[i].innerHTML = `${gameBoard[i]}`;
 }
 }
-
 
 
 function renderScore(){
@@ -117,7 +168,6 @@ function createPerson(){
     }
  }
 
-
  
 function newGameStart(){
 clearBoard();
@@ -129,6 +179,14 @@ playerVSCPU.setAttribute('style','display:flex');
 nameInput.setAttribute('style','display:none');
 msgBox.setAttribute('style','animation:none');
 tttContainer.setAttribute('style','animation:none');
+while(player1Icon.firstChild){
+    player1Icon.removeChild(player1Icon.firstChild)
+}
+
+while(player2Icon.firstChild){
+    player2Icon.removeChild(player2Icon.firstChild)
+}
+
 }
 
 
@@ -137,16 +195,64 @@ function choosePlayer(){
     nameInput.setAttribute('style','display:flex');
     //opens nameInput menu//
     player1Icon.appendChild(PlayerImage);
-      player2Icon.appendChild(Player2Image);
-      document.getElementById('nameInputBox').focus();
+    player2Icon.appendChild(Player2Image);
+    document.getElementById('nameInputBox').focus();
  }
 
+ function chooseCPU(){
+    cpuVScpu.setAttribute('style','display:flex');
+    playerVSCPU.setAttribute('style','display:none');
+    cpuVScpu.addEventListener('click',CPUpicker)
+    player1Icon.appendChild(PlayerImage);
+    player2Icon.appendChild(CPUImage);
 
+    function CPUpicker(e) {
+    if (e.target.id === "easyCPUchoice"){currentPlayers[1]=cpuEasy};
+    if (e.target.id === "medCPUchoice"){currentPlayers[1]=cpuMedium};
+    if (e.target.id === 'hardCPUchoice'){currentPlayers[1]=cpuHard};
+    setCPU();
+ }
+}
+
+ function cpuChecker(){
+    if (currentPlayers[1] === cpuEasy || currentPlayers[1] === cpuMedium || currentPlayers[1] === cpuHard){
+        return true
+    };
+    return false;
+    }
+
+function setCPU(){
+    cpuVScpu.setAttribute('style','display:none');
+    nameInput.setAttribute('style','display:flex');
+    document.getElementById('nameInputBox').focus();
+    currentPlayers[1].score = 0
+
+}
+    
 
 
 function submitNameFxn(){
     nameInputBoxLabel.innerHTML = 'Player 1 Name:'
 let value = document.getElementById('nameInputBox').value;
+
+if (cpuChecker()){
+//cpu function//
+if (value.length > 14){
+    alert('INVALID SUBMISSION: Player name max length is 14')
+}
+else{playerName = value
+currentPlayers[0] = createPerson();
+console.table(currentPlayers);
+console.log('ready to play');
+hiddenDiv.setAttribute('style','display:none');
+superContainer.setAttribute('style','display:flex;z-index:99')
+playersLoaded();
+document.getElementById('nameInputBox').value = '';
+}
+}
+//end cpu function
+else{
+
 if (value.length > 14){
     alert('INVALID SUBMISSION: Player name max length is 14')
 }
@@ -167,7 +273,7 @@ if (currentPlayers.length === 2){
     playersLoaded();
 }
 }
-
+}
 
 
 
@@ -182,8 +288,9 @@ function playersLoaded(){
     player1Name.innerHTML = currentPlayers[0].playerName;
     player2Name.innerHTML = currentPlayers[1].playerName;
     msgBox.innerHTML = "Randomizing..."
-    setTimeout(postRandom,1000)
-    addListeners();
+    setTimeout(postRandom,1000);
+    setTimeout(cpuAIswitch,1000);
+    setTimeout(addListeners,1000);
     renderScore();
 }
 
@@ -241,6 +348,9 @@ else if (xcount-ocount === 0){
     for(let i = 0;i<9;i++){
         if (selector[i]===this){gameBoard[i] = 'X'} 
     }
+    if (cpuChecker()){
+    cpuAIswitch();
+    }
     checkWin()
 }
 
@@ -249,6 +359,10 @@ else if (xcount-ocount === 1){
     for(let i = 0;i<9;i++){
         if (selector[i]===this){gameBoard[i] = 'O'} 
     }
+    if (cpuChecker()){
+        cpuAIswitch();
+    }
+
     checkWin()
 }
 }
@@ -275,6 +389,7 @@ function chooseContinue() {
     document.getElementById('continue').setAttribute('style','display:none')
     tttContainer.setAttribute('style','animation:none');
     msgBox.setAttribute('style','animation:none');
+    cpuAIswitch();
 }
 
 function switchXO(x) {
@@ -282,6 +397,7 @@ function switchXO(x) {
         x.marker = 'O'
     }
     else {x.marker ='X'}
+
 }
 
 
