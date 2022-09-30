@@ -126,10 +126,78 @@ function medCPUAI(){
 //HARD CPU AI//
 
 function hardCPUAI(){
+    let xcount = gameBoard.filter(x => x === 'X').length;
+    let ocount = gameBoard.filter(o => o === 'O').length;
+    allBoxes = document.getElementsByClassName('insideBox')
+//first move as X//
+    if (currentPlayers[1].marker === 'X' && xcount === 0){
+        gameBoard[0] = 'X';
+        allBoxes[0].innerHTML = 'X'
+    }
+//second move as X
+    else if (currentPlayers[1].marker === 'X' && xcount === 1 && ocount === 1
+    && gameBoard[4]!='O'){
+        if (gameBoard[3] === 'O'|| gameBoard[6]==='O'){
+            gameBoard[2] = 'X';allBoxes[2].innerHTML='X'}
+        else {
+            gameBoard[6] = 'X';allBoxes[6].innerHTML='X'}
+    }
+//third move as X
+else if (currentPlayers[1].marker === 'X' && xcount === 2 && ocount === 2){
+        if(gameBoard[2]==='X'){
+            if(gameBoard[1]!='O'){
+                gameBoard[1]='X';
+                allBoxes[1].innerHTML='X';
+                checkWin();
+            }
+            gameBoard[8]='X';
+            allBoxes[8].innerHTML='X'
+        }
+        else if(gameBoard[6]==='X'){
+            if(gameBoard[3]!='O'){
+                gameBoard[3]='X';
+                allBoxes[3].innerHTML='X';
+                checkWin();
+            }
+            gameBoard[8]='X';
+            allBoxes[8].innerHTML='X';
+        }
+    }
+
+//fourth move as X
+else if (currentPlayers[1].marker === 'X' && xcount === 3 && ocount === 3){
+    if (gameBoard[8]='X'){
+        if (gameBoard[4]==='O'){
+            gameBoard[7]='X';
+            allBoxes[7].innerHTML='X';
+            checkWin();
+        }
+        else if (gameBoard[7]==='O'){
+            gameBoard[4]='X';
+            allBoxes[4].innerHTML='X';
+            checkWin();
+        }
+    }
+    else if (gameBoard[6]='X'){
+        if (gameBoard[1]==='O'){
+            gameBoard[3]='X';
+            allBoxes[3].innerHTML='X';
+            checkWin();
+        }
+        else if (gameBoard[3]==='O'){
+            gameBoard[1]='X';
+            allBoxes[1].innerHTML='X';
+            checkWin();
+        }
+
+    }
 
 }
 
 
+
+    //hardAI last bracket
+}
 
 function render(){
 let selector = document.getElementsByClassName(`insideBox`)
@@ -170,6 +238,7 @@ function createPerson(){
 
  
 function newGameStart(){
+removeListeners();
 clearBoard();
 currentPlayers = []
 playerVSCPU.setAttribute('style','display:flex');
